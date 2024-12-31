@@ -1,0 +1,88 @@
+/* Container for the whole card */
+.event-card-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-card-container:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Cover image section */
+  .event-cover-image {
+    height: 200px;
+    overflow: hidden;
+    background: #f4f4f4;
+  }
+  
+  .event-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  /* Event details section */
+  .event-details {
+    padding: 20px 30px;
+    text-align: center;
+  }
+  
+  /* Event title */
+  .event-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  /* Date and time */
+  .event-datetime {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  
+  .event-label {
+    font-weight: 600;
+  }
+  
+  /* Event description */
+  .event-description-container {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  
+  .event-description-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .event-description-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Action buttons */
+  .event-actions {
+    text-align: center;
+  }
+  
+  .edit-event-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-event-button:hover {
+    background-color: #0056b3;
+  }
+  

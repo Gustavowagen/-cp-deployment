@@ -1,0 +1,143 @@
+/* Main container layout */
+#main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100vh; /* Ensures the container is within the viewport */
+    padding: 20px; /* Adds some padding around the container */
+    overflow: hidden; /* Prevents extra scrollbars */
+}
+
+
+/* Scroll container */
+#event-scroll-container {
+    height: 70vh;
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Padding inside the scroll container */
+    overflow-y: auto; /* Enables vertical scrolling */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Event cards container */
+#event-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Creates space between cards */
+}
+
+/* Individual event card */
+.event-card {
+    width: 350px !important; /* Fixed width for cards */
+    max-width: 100% !important;
+    border-radius: 10px !important; /* Rounded corners for cards */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important; /* Subtle card shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    margin: 10px;
+    min-height: 150px;
+}
+
+.event-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15) !important; /* More prominent shadow on hover */
+}
+
+/* Card content styling */
+.card-content {
+    padding: 15px;
+    text-align: center; /* Center content inside card */
+}
+
+.card-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: #666;
+    max-width: 240px;
+    margin: 0 auto; /* Center the paragraph */
+}
+
+/* Button group inside card */
+.CardOverflow {
+    padding: 10px;
+    background-color: #f9f9f9; /* Lighter background */
+    border-top: 1px solid #e1e4e8; /* Border at the top */
+    display: flex;
+    justify-content: space-evenly; /* Distribute buttons evenly */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.CardActions button {
+    background-color: #6666FF;
+    color: white;
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.CardActions button:hover {
+    background-color: #5555cc; /* Darker blue on hover */
+}
+
+
+#event-delete-container {
+    position: fixed; /* Ensures it stays in one place relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Covers the full width of the viewport */
+    height: 100vh; /* Covers the full height of the viewport */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for overlay effect */
+    z-index: 1000; /* Ensure it overlaps other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers the child div */
+}
+
+#conf-delete-event {
+    background: white; /* Background for the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+}
+
+#conf-delete-event > h3 {
+    color: black !important;
+}
+
+#noEventContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#create-new-event-btn {
+    position: fixed;
+    right: 75px;
+    bottom: 75px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  #create-new-event-btn:hover {
+    background-color: #0056b3;
+  }
+
+#exp-text {
+    max-width: 500px;
+}

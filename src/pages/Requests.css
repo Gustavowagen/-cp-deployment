@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6; /* Light background */
+  }
+  
+  /* Parent container with overflow handling */
+  #abcd {
+    max-height: 100vh; /* Make sure this is constrained to viewport height */
+    overflow: hidden; /* Prevents the parent from causing extra scrollbars */
+  }
+  
+  .request-scroll-container {
+    overflow-y: auto;
+    height: 70vh; /* Set this to the desired height, ensuring it doesn't overflow the viewport */
+  }
+  
+  .request-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  

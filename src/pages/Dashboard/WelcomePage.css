@@ -1,0 +1,97 @@
+/* Parent Container Styling */
+#parent-welcome-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative; /* Allows us to add custom shapes with absolute positioning */
+    overflow: hidden; /* Ensures shapes don’t overflow */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible column layout */
+    gap: 40px; /* Increase spacing between the grid items */
+    max-width: 1200px; /* Constrain grid width to avoid spanning too wide */
+    margin: 0 auto; /* Center the grid */
+    padding: 20px; /* Add inner padding to the grid */
+}
+
+/* Welcome Text Styling */
+#welcome-h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.5;
+    z-index: 10; /* Ensures it appears above the shapes */
+    position: relative;
+}
+
+/* Grid Items Styling */
+.grid a, .grid button {
+    display: block;
+    background-color: #ffffff; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    overflow: hidden;
+    padding: 20px; /* Add padding inside the cards */
+}
+
+/* Hover Effect for Grid Items */
+.grid a:hover, .grid button:hover {
+    transform: translateY(-5px) scale(1.05); /* Move slightly up and enlarge */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Text Inside Card */
+.grid a div, .grid button div {
+    text-align: center;
+    color: #1f2937; /* Neutral dark color */
+}
+
+.grid a:hover div, .grid button:hover div {
+    color: #2563eb; /* Change color on hover */
+}
+
+/* Custom Background Shapes */
+#parent-welcome-container::before,
+#parent-welcome-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%; /* Circular shapes */
+    opacity: 0.5;
+    z-index: 1; /* Ensure it stays behind the content */
+}
+
+/* Top-Left Shape */
+#parent-welcome-container::before {
+    width: 300px;
+    height: 300px;
+    background: rgba(37, 99, 235, 0.6); /* Semi-transparent blue */
+    top: -50px;
+    left: -50px;
+    animation: float 6s ease-in-out infinite; /* Floating animation */
+}
+
+/* Bottom-Right Shape */
+#parent-welcome-container::after {
+    width: 400px;
+    height: 400px;
+    background: rgba(59, 130, 246, 0.4); /* Lighter semi-transparent blue */
+    bottom: -100px;
+    right: -100px;
+    animation: float 8s ease-in-out infinite; /* Floating animation */
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}

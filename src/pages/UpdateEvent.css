@@ -1,0 +1,28 @@
+
+
+.time-container {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+
+#hour-field {
+    margin-left: 15px;
+}
+
+#minute-field {
+    margin-left: 25px;
+}
+
+#err-msg {
+    margin-top: 20px;
+}
+
+#date-selector:hover {
+    cursor: pointer;
+}
+  
+
