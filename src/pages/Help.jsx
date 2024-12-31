@@ -52,8 +52,9 @@ export default function HelpPage() {
                         <Typography variant="body2">
                             For den beste brukeropplevelsen anbefaler vi at du bruker pc. Nettsiden skal funke
                             bra på andre enheter også. Hvis du opplever problemer med scrolling på Iphone
-                            slik at menyen i toppen forsvinner kan du prøve å scrolle forsiktig opp eller
-                            laste inn siden på nytt
+                            for eksempel slik at menyen i toppen forsvinner, kan du prøve å scrolle, vente et 
+                            sekund og deretter scrolle resten av veien opp eller ned. Hvis dette ikke hjelper kan du prøve
+                            å laste inn siden på nytt.
                         </Typography>
                     </Box>
                 </CardContent>
