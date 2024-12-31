@@ -36,7 +36,7 @@ export default function SiteOverview() {
         if (loading) return;
         setLoading(true);
         try {
-            const response1 = await fetch(`http://localhost:8080/api/site?id=${params.id}`, {
+            const response1 = await fetch(`https://9eb0-85-164-168-215.ngrok-free.app/api/site?id=${params.id}`, {
                 method:"GET",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -45,7 +45,7 @@ export default function SiteOverview() {
             const data1 = await response1.json();
             setSite(data1);
 
-            const response = await fetch("http://localhost:8080/api/user/self", {
+            const response = await fetch("https://9eb0-85-164-168-215.ngrok-free.app/api/user/self", {
                 method: "GET",
                 headers: {
                   "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -67,7 +67,7 @@ export default function SiteOverview() {
         if (loading) return;
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:8080/api/lim-events/related?page=${page}&size=22&siteId=${params.id}`, {
+            const response = await fetch(`https://9eb0-85-164-168-215.ngrok-free.app/api/lim-events/related?page=${page}&size=22&siteId=${params.id}`, {
                 method:"GET",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -113,7 +113,7 @@ export default function SiteOverview() {
         if (loading) return;
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:8080/api/event/delete?id=${id}`, {
+            const response = await fetch(`https://9eb0-85-164-168-215.ngrok-free.app/api/event/delete?id=${id}`, {
                 method:"DELETE",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`

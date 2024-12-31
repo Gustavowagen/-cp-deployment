@@ -41,7 +41,7 @@ export default function SelectSite() {
 
   const fetchSites = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/sites/related", {
+      const response = await fetch("https://9eb0-85-164-168-215.ngrok-free.app/api/sites/related", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -69,7 +69,7 @@ export default function SelectSite() {
         return;
     }
     try {
-        const response = await fetch(`http://localhost:8080/api/site/delete?id=${currentSiteId}`, {
+        const response = await fetch(`https://9eb0-85-164-168-215.ngrok-free.app/api/site/delete?id=${currentSiteId}`, {
             method:"DELETE",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -91,7 +91,7 @@ export default function SelectSite() {
   const requestNewSite = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8080/api/site/request`, {
+      const response = await fetch(`https://9eb0-85-164-168-215.ngrok-free.app/api/site/request`, {
         method:"POST",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -129,7 +129,7 @@ export default function SelectSite() {
                     </Button>
                     {wrongText && (<h3>Ikke riktig tekst</h3>)}
                     <br />
-                    <button style={{marginLeft:"5px", marginTop:"5px"}} onClick={toggleDeleteForm} className='dark: text-black'>Gå tilabake</button>
+                    <button style={{marginLeft:"5px", marginTop:"5px"}} onClick={toggleDeleteForm} className='dark: text-black'>Gå tilbake</button>
                 </form>
             </div>
         </div>
@@ -168,7 +168,7 @@ export default function SelectSite() {
         )}
         {showRequestForm && (
               <div id="request-site-form">
-                <form id='just-the-form' onSubmit={requestNewSite}>
+                <form id='just-the-form' onSubmit={requestNewSite} >
                   <h1>Send en forespørsel</h1>
                   <h3>Sidens navn</h3>
                   <input
@@ -191,7 +191,7 @@ export default function SelectSite() {
                       Send forespørsel
                     </Button>
                   <br />
-                  <button style={{marginLeft:"5px", marginTop:"15px"}} onClick={() => setShowRequestForm(false)} className='dark: text-black'>Gå tilabake</button>
+                  <button style={{marginLeft:"5px", marginTop:"15px"}} onClick={() => setShowRequestForm(false)} className='dark: text-black'>Gå tilbake</button>
                 </form>
               </div>
             )}
