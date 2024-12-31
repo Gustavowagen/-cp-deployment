@@ -3,12 +3,15 @@ import "./signIn.css";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
+import useColorMode from '../../hooks/useColorMode';
 
 export default function SignIn(props) {
 
   const [error, setError] = useState(false);
 
   const [loading, setLoading] = useState(false);
+
+  const [colorMode, setColorMode] = useColorMode();
 
   const [formData, setFormData] = useState({
     "username": "",
@@ -18,6 +21,7 @@ export default function SignIn(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setColorMode("light");
     try {
       const main = document.querySelector("main");
       if (main !== null) {

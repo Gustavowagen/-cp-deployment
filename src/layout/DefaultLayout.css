@@ -1,0 +1,9 @@
+
+
+@media (max-width: 767px) {
+    @media (max-height:1100px) {
+        #homePage-top-div {
+            height: auto;
+        }
+    }
+}

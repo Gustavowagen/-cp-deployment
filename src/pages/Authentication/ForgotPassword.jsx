@@ -1,12 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom';
 import "./forgotPassword.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
+import useColorMode from '../../hooks/useColorMode';
 
 
 export default function ForgotPassword() {
   const navigate = useNavigate();
+
+  const [colorMode, setColorMode] = useColorMode();
 
   const [formData, setFormData] = useState({
     "username":"",
@@ -27,6 +30,10 @@ export default function ForgotPassword() {
       [name]: value,
     });
   }
+
+  useEffect(() => {
+    setColorMode("light");
+  }, []);
 
   const handleSubmit = async (e) => {
     if (loading) return;

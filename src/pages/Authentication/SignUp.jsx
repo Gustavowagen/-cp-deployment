@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
+import useColorMode from '../../hooks/useColorMode';
 
 export default function SignUp() {
 
@@ -14,6 +15,8 @@ export default function SignUp() {
     "phone":""
   });
 
+  const [colorMode, setColorMode] = useColorMode();
+
   const [success, setSuccess] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -21,6 +24,7 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setColorMode("light");
     try {
       const main = document.querySelector("main");
       if (main !== null) {

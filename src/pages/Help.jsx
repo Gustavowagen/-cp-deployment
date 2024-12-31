@@ -46,6 +46,15 @@ export default function HelpPage() {
                             din tilgang bli tilbakestillt. Dette betyr ikke at du har mistet brukeren din,
                             men bare at du må logge inn på nytt for å fornye tilgangsrettigheten på siden.
                         </Typography>
+                        <Typography variant="body1" gutterBottom sx={{ mt: 2 }}>
+                            <strong>Problem 3:</strong> Problemer med scrolling på Iphone
+                        </Typography>
+                        <Typography variant="body2">
+                            For den beste brukeropplevelsen anbefaler vi at du bruker pc. Nettsiden skal funke
+                            bra på andre enheter også. Hvis du opplever problemer med scrolling på Iphone
+                            slik at menyen i toppen forsvinner kan du prøve å scrolle forsiktig opp eller
+                            laste inn siden på nytt
+                        </Typography>
                     </Box>
                 </CardContent>
             </Card>

@@ -227,7 +227,7 @@ const EditProfile = (props) => {
                       value={formData.oldPassword}
                       onChange={handleChange}
                     />
-                    <button style={{marginTop:"20px", color: "#008cff"}} onClick={() => navigate("/auth/forgot-password")}>Glemt passord?</button>
+                    <button style={{marginTop:"20px", color: "#008cff"}} onClick={() => navigate("/auth/forgot-password")}>Glemt passord? (krever innlogging på nytt)</button>
                   </div>
 
                   <div className="mb-5.5">

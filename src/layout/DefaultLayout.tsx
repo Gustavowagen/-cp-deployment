@@ -2,6 +2,7 @@ import React, { useState, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation to detect the current route
 import Header from '../components/Header/index';
 import Sidebar from '../components/Sidebar/index';
+import "./DefaultLayout.css";
 
 const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -28,7 +29,7 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
           <main className="h-full">
             {isHomePage ? (
               // Custom styles/content for HomePage only
-              <div className="h-full min-w-full flex items-center justify-center p-0">
+              <div id='homePage-top-div' className="h-full min-w-full flex items-center justify-center p-0">
                 {children}
               </div>
             ) : (
