@@ -46,7 +46,7 @@ export default function SignIn(props) {
     setLoading(true);
     e.preventDefault();
     try {
-      const response = await axios.post("http://192.168.86.68:8080/api/auth/login", formData, {
+      const response = await axios.post("https://1e29-85-164-168-215.ngrok-free.app/api/auth/login", formData, {
         headers: { "Content-Type": "application/json" }
       });
       const data = response.data;
