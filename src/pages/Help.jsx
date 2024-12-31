@@ -50,7 +50,7 @@ export default function HelpPage() {
                 </CardContent>
             </Card>
 
-            <Card sx={{ mb: 3 }} className='dark:bg-meta-4'>
+            <Card style={{marginBottom:"100px"}} sx={{ mb: 3 }} className='dark:bg-meta-4'>
                 <CardContent className='dark:text-white'>
                     <Typography variant="h5" component="h2" gutterBottom>
                         Kontakt
