@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ClickOutside from '../ClickOutside';
 import DefaultPic from '../../images/user/default-profile.png';
+import axios from 'axios';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -10,25 +11,24 @@ const DropdownUser = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const fetchProfile = async () => {
     if (loading) return;
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/api/user/self", {
-        method: "GET",
+      const response = await axios.get(`${API_URL}/api/user/self`, {
         headers: {
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
-        }
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
       });
-      const data = await response.json();
-      setUser(data);
+      setUser(response.data);
     } catch (error) {
       console.error(error.message);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     fetchProfile();

@@ -6,7 +6,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 // Problem --> Blandet sending og receiving når det kommer til send og get
 // I send skal receivingUsername være den den user som det skal bli sendt til
 // I get message skal det receiverUsername være sendToUsername. Receiver er ikke den som har token men den som har grå messages
-export default function Chat() {
+export default function Chat(props) {
 
   const sendToUsername = "Gustavo"; // change to NS solutions
 
@@ -30,11 +30,11 @@ export default function Chat() {
 
   
   const fetchMessages = async () => {
-    if (loading) return; // Prevent duplicate fetch calls
+    if (loading) return;
     setLoading(true);
 
     try {                                                   // SenderUsername er feil tror jeg, burde være receiver, det vil stemme å si at gustavo er receiver
-      const response = await fetch(`http://localhost:8080/api/lim-messages/related?page=${pageNumber}&size=${25}&receiverUsername=${sendToUsername}`, { 
+      const response = await fetch(`${props.API_URL}/api/lim-messages/related?page=${pageNumber}&size=${25}&receiverUsername=${sendToUsername}`, { 
         method: "GET",
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -114,7 +114,7 @@ export default function Chat() {
     e.preventDefault();
   
     try {
-      const response = await fetch(`http://localhost:8080/api/message/send?receiverUsername=${sendToUsername}`, {
+      const response = await fetch(`${props.API_URL}/api/message/send?receiverUsername=${sendToUsername}`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -145,7 +145,7 @@ export default function Chat() {
     if (loading) return;
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8080/api/message/delete?id=${id}`, {
+      const response = await fetch(`${props.API_URL}/api/message/delete?id=${id}`, {
         method:"DELETE",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,

@@ -22,7 +22,7 @@ const EditProfile = (props) => {
     if (loading) return;
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/api/user/self", {
+      const response = await fetch(`${props.API_URL}/api/user/self`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -52,7 +52,7 @@ const EditProfile = (props) => {
     if (loading) return;
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8080/api/user/update`, {
+      const response = await fetch(`${props.API_URL}/api/user/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

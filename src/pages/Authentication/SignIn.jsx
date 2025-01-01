@@ -50,12 +50,13 @@ export default function SignIn(props) {
     setLoading(true);
     e.preventDefault();
     try {
-      const response = await axios.post("https://9eb0-85-164-168-215.ngrok-free.app/api/auth/login", formData, {
+      const response = await axios.post(`${props.API_URL}/api/auth/login`, formData, {
         headers: { "Content-Type": "application/json" }
       });
       const data = response.data;
       props.setToken(data.token);
       localStorage.setItem("token", data.token);
+      if (response.status === 200) navigate("/");
       navigate("/");
     } catch (error) {
       console.error(error.message);

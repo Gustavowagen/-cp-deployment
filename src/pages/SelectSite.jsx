@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import "./SelectSite.css";
 import { useNavigate } from 'react-router-dom';
 
-export default function SelectSite() {
+export default function SelectSite(props) {
   const [sites, setSites] = useState([]);
 
   const [wrongText, setWrongText] = useState(false);
@@ -41,7 +41,7 @@ export default function SelectSite() {
 
   const fetchSites = async () => {
     try {
-      const response = await fetch("https://9eb0-85-164-168-215.ngrok-free.app/api/sites/related", {
+      const response = await fetch(`${props.API_URL}/api/sites/related`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -58,10 +58,6 @@ export default function SelectSite() {
     fetchSites();
   }, []);
 
-  useEffect(() => {
-    //console.log(sites);
-  }, [sites]);
-
   const handleDelete = async (e) => {
     e.preventDefault();
     if (deleteText !== "slett side") {
@@ -69,7 +65,7 @@ export default function SelectSite() {
         return;
     }
     try {
-        const response = await fetch(`https://9eb0-85-164-168-215.ngrok-free.app/api/site/delete?id=${currentSiteId}`, {
+        const response = await fetch(`${props.API_URL}/api/site/delete?id=${currentSiteId}`, {
             method:"DELETE",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -91,7 +87,7 @@ export default function SelectSite() {
   const requestNewSite = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`https://9eb0-85-164-168-215.ngrok-free.app/api/site/request`, {
+      const response = await fetch(`${props.API_URL}/api/site/request`, {
         method:"POST",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,

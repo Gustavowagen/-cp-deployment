@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import "./EventOverview.css";
 
-export default function EventOverview() {
+export default function EventOverview(props) {
 
     const [loading, setLoading] = useState(false);
     const [event, setEvent] = useState({});
@@ -18,7 +18,7 @@ export default function EventOverview() {
         setLoading(true);
         try {
             // Event
-            const response2 = await fetch(`http://localhost:8080/api/event?id=${params.eventId}`, {
+            const response2 = await fetch(`${props.API_URL}/api/event?id=${params.eventId}`, {
                 method:"GET",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -28,7 +28,7 @@ export default function EventOverview() {
             setEvent(data2);
 
             // Site
-            const response1 = await fetch(`http://localhost:8080/api/site?id=${params.siteId}`, {
+            const response1 = await fetch(`${props.API_URL}/api/site?id=${params.siteId}`, {
               method:"GET",
               headers: {
                   "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ export default function EventOverview() {
           const data1 = await response1.json();
 
           // User
-          const response = await fetch("http://localhost:8080/api/user/self", {
+          const response = await fetch(`${props.API_URL}/api/user/self`, {
               method: "GET",
               headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`

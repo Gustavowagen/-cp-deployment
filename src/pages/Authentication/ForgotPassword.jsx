@@ -6,7 +6,7 @@ import axios from 'axios';
 import useColorMode from '../../hooks/useColorMode';
 
 
-export default function ForgotPassword() {
+export default function ForgotPassword(props) {
   const navigate = useNavigate();
 
   const [colorMode, setColorMode] = useColorMode();
@@ -42,7 +42,7 @@ export default function ForgotPassword() {
     setError(false);
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/auth/update-password", formData, {
+      await axios.post(`${props.API_URL}/api/auth/update-password`, formData, {
         headers: { "Content-Type": "application/json" },
       });
 

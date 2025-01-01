@@ -7,7 +7,7 @@ import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import useColorMode from '../../hooks/useColorMode';
 
-export default function SignUp() {
+export default function SignUp(props) {
 
   const [formData, setFormData] = useState({
     "username":"",
@@ -45,13 +45,12 @@ export default function SignUp() {
     e.preventDefault();
     try {
       // Sending a POST request with Axios
-      await axios.post("http://localhost:8080/api/auth/request-account", formData, { // Legg til error eller success message etter send
+      await axios.post(`${props.API_URL}/api/auth/request-account`, formData, {
         headers: { "Content-Type": "application/json" }
       });
 
       setSuccess(true);
       
-      // Reset form data after successful submission
       setFormData({
         "username": "",
         "email": "",

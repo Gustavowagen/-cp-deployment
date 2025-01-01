@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import flatpickr from 'flatpickr';
 import { useEffect, useRef, useState } from 'react';
 
-export default function CreateEvent() {  // Burde hatt alt data i formData og ikke hver for seg med time
+export default function CreateEvent(props) {  // Burde hatt alt data i formData og ikke hver for seg med time
 
   const params = useParams();
 
@@ -54,7 +54,7 @@ export default function CreateEvent() {  // Burde hatt alt data i formData og ik
     if (loading) return;
     setLoading(true);
     try {
-        const response1 = await fetch(`http://localhost:8080/api/site?id=${params.siteId}`, {
+        const response1 = await fetch(`${props.API_URL}/api/site?id=${params.siteId}`, {
             method:"GET",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -130,7 +130,7 @@ export default function CreateEvent() {  // Burde hatt alt data i formData og ik
             return;
         }
         try {
-            const response = await fetch(`http://localhost:8080/api/event/create?siteId=${params.siteId}`, {
+            const response = await fetch(`${props.API_URL}/api/event/create?siteId=${params.siteId}`, {
                 method:"POST",
                 headers: {
                     "Content-Type": "application/json",

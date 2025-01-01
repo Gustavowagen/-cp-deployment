@@ -25,12 +25,15 @@ import WelcomePage from './pages/Dashboard/WelcomePage';
 import HelpPage from './pages/Help';
 import { jwtDecode } from 'jwt-decode';
 
+
 function App() {
   const [loading, setLoading] = useState(true);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   
   const [token, setToken] = useState("");
+
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const isTokenExpired = (jwtToken) => {
     if (!jwtToken)  {
@@ -51,7 +54,7 @@ function App() {
 
   const refreshToken = async (_token_) => {
     try {
-      const response = await fetch("http://localhost:8080/api/auth/refresh-token", {
+      const response = await fetch(`${API_URL}/api/auth/refresh-token`, {
         method:"POST",
         headers: {
           "Authorization": `Bearer ${_token_}`,
@@ -90,35 +93,35 @@ function App() {
   const authRoutes = (
     <Routes>
       <Route path="/auth/forgot-password" element={<><PageTitle title="Glemt passord" /><ForgotPassword /></>} />
-      <Route path="/auth/signin" element={<><PageTitle title="Logg inn" /><SignIn setToken={setToken} /></>} />
-      <Route path="/auth/signup" element={<><PageTitle title="Spør om bruker" /><SignUp /></>} />
+      <Route path="/auth/signin" element={<><PageTitle title="Logg inn" /><SignIn setToken={setToken} API_URL={API_URL} /></>} />
+      <Route path="/auth/signup" element={<><PageTitle title="Spør om bruker" /><SignUp API_URL={API_URL} /></>} />
     </Routes>
   );
 
   const appRoutes = (
     <DefaultLayout>
       <Routes>
-        <Route index element={<><PageTitle title="Hjem" /><WelcomePage setToken={setToken} /></>} />
+        <Route index element={<><PageTitle title="Hjem" /><WelcomePage setToken={setToken} API_URL={API_URL} /></>} />
         
-        <Route path="/profile" element={<><PageTitle title="Profil" /><Profile /></>} />
+        <Route path="/profile" element={<><PageTitle title="Profil" /><Profile API_URL={API_URL} /></>} />
         
-        <Route path="/edit-profile" element={<><PageTitle title="Rediger profil" /><EditProfile setToken={setToken} /></>} />
+        <Route path="/edit-profile" element={<><PageTitle title="Rediger profil" /><EditProfile setToken={setToken} API_URL={API_URL} /></>} />
         
-        <Route path="/chat" element={<><PageTitle title="Chat" /><Chat /></>} />
+        <Route path="/chat" element={<><PageTitle title="Chat" /><Chat API_URL={API_URL} /></>} />
         
-        <Route path="/select-site" element={<><PageTitle title="Velg side" /><SelectSite /></>} />
+        <Route path="/select-site" element={<><PageTitle title="Velg side" /><SelectSite API_URL={API_URL} /></>} />
         
-        <Route path="/request-dashboard" element={<><PageTitle title="Se requests" /><RequestDashboard /></>} />
+        <Route path="/request-dashboard" element={<><PageTitle title="Se requests" /><RequestDashboard API_URL={API_URL} /></>} />
         
-        <Route path="/site/:id" element={<><PageTitle title="Side info" /><SiteOverview /></>} />
+        <Route path="/site/:id" element={<><PageTitle title="Side info" /><SiteOverview API_URL={API_URL} /></>} />
         
-        <Route path="/event/:siteId/:eventId" element={<><PageTitle title="Hendelse info" /><EventOverview /></>} />
+        <Route path="/event/:siteId/:eventId" element={<><PageTitle title="Hendelse info" /><EventOverview API_URL={API_URL} /></>} />
         
-        <Route path="/create-event/:siteId" element={<><PageTitle title="Lag hendelse" /><CreateEvent /></>} />
+        <Route path="/create-event/:siteId" element={<><PageTitle title="Lag hendelse" /><CreateEvent API_URL={API_URL} /></>} />
         
-        <Route path="/edit-event/:siteId/:eventId" element={<><PageTitle title="Rediger hendelse" /><UpdateEvent /></>} />
+        <Route path="/edit-event/:siteId/:eventId" element={<><PageTitle title="Rediger hendelse" /><UpdateEvent API_URL={API_URL} /></>} />
         
-        <Route path="/help" element={<><PageTitle title="Hjelp" /><HelpPage /></>} />
+        <Route path="/help" element={<><PageTitle title="Hjelp" /><HelpPage API_URL={API_URL} /></>} />
       </Routes>
     </DefaultLayout>
   );

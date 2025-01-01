@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import "./Profile.css";
 import Button from '@mui/material/Button';
 
-const Profile = () => {
+const Profile = (props) => {
 
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const Profile = () => {
     if (loading) return;
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/api/user/self", {
+      const response = await fetch(`${props.API_URL}/api/user/self`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -36,7 +36,7 @@ const Profile = () => {
     if (loading) return;
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/api/sites/related", {
+      const response = await fetch(`${props.API_URL}/api/sites/related`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`

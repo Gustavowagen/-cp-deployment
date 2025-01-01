@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
-const RequestDashboard = () => {
+const RequestDashboard = (props) => {
 
     const [allowedAccess, setAllowedAccess] = useState(false);
     const [requests, setRequests] = useState([]);
@@ -21,7 +21,7 @@ const RequestDashboard = () => {
       if (loading) return;
         setLoading(true);
         try {
-            const response = await fetch("http://localhost:8080/api/user/self", {
+            const response = await fetch(`${props.API_URL}/api/user/self`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -42,7 +42,7 @@ const RequestDashboard = () => {
       if (loading) return;
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:8080/api/lim-requests?page=${page}&size=10`, {
+            const response = await fetch(`${props.API_URL}/api/lim-requests?page=${page}&size=10`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -78,7 +78,7 @@ const RequestDashboard = () => {
 
     const acceptRequest = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/request/accept?id=${id}`, {
+            const response = await fetch(`${props.API_URL}/api/request/accept?id=${id}`, {
                 method:"DELETE",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -93,7 +93,7 @@ const RequestDashboard = () => {
 
     const denyRequest = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/request/deny?id=${id}`, {
+            const response = await fetch(`${props.API_URL}/api/request/deny?id=${id}`, {
                 method:"DELETE",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
