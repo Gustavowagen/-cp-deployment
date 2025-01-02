@@ -53,7 +53,7 @@ html, body {
 
 /* Message Bubble */
 .message {
-  max-width: 60%;
+  max-width: 70%;
   padding: 15px 20px;
   border-radius: 15px;
   word-wrap: break-word;
